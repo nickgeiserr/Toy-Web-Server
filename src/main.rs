@@ -18,7 +18,11 @@ fn handle_connection(mut stream: TcpStream) {
 
     let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
         ("HTTP/1.1 200 OK", "SiteSource/index.html")
-    } else {
+    }
+    else if request_line == "GET /styles.css HTTP/1.1" {
+        ("HTTP/1.1 200 OK", "SiteSource/styles.css")
+    }
+    else {
         ("HTTP/1.1 404 NOT FOUND", "WebServerPremade/404.html")
     };
 
